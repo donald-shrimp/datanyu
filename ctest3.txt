@@ -1,0 +1,39 @@
+Script started on Wed Jun  5 17:29:58 2019
+u306024@imac-510[31]: cat ctest3.c
+#include<stdio.h>
+int koyakusu(int a,int b);
+int main(){
+  int a,b,x;
+  printf("二つの自然数を入力しなさい\n");
+  printf("aの値は？:");
+  scanf("%d",&a);
+  printf("bの値は？:");
+  scanf("%d",&b);
+  x=koyakusu(a,b);
+  printf("%dと%dの最大公約数は%dです\n",a,b,x);
+  return 0;
+}
+
+int koyakusu(int a,int b){
+  int r;
+  r=a%b;
+  if(r==0){
+    return b;
+  }
+  return koyakusu(b,r);
+}
+u306024@imac-510[32]: gcc ctest3.c
+u306024@imac-510[33]: a.out
+二つの自然数を入力しなさい
+aの値は？:40
+bの値は？:16
+40と16の最大公約数は8です
+u306024@imac-510[34]: a.out
+二つの自然数を入力しなさい
+aの値は？:696
+bの値は？:504
+696と504の最大公約数は24です
+u306024@imac-510[35]: exit
+exit
+
+Script done on Wed Jun  5 17:31:10 2019

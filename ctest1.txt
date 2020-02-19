@@ -1,0 +1,59 @@
+Script started on Wed Jun  5 17:38:25 2019
+u306024@imac-510[31]: cat ctest1.c
+#include<stdio.h>
+#define N 100
+struct stu{
+  char name[N];
+  int id,ma,en,ph;
+};
+
+int main(){
+  struct stu dent[5]={{"Abe",306001,80,73,44},
+		      {"Igarashi",306021,62,92,50},
+		      {"Sato",306041,82,77,61},
+		      {"Suzuki",306051,74,85,94},
+		      {"Takahashi",306061,76,54,87}
+  };
+  int sum[5],max,min,i;
+  double avema=0,aveen=0,aveph=0,avesum=0;
+  for(i=0;i<5;i++){
+    sum[i]=dent[i].ma+dent[i].en+dent[i].ph;
+    avema+=dent[i].ma;
+    aveen+=dent[i].en;
+    aveph+=dent[i].ph;
+    avesum+=sum[i];
+    if(i==0){
+      max=sum[i];
+      min=sum[i];
+    }
+    if(max<sum[i]){
+      max=sum[i];
+    }else if(min>sum[i]){
+      min=sum[i];
+    }
+  }
+  for(i=0;i<5;i++){
+    printf("%s (%d)の合計点は：%d点\n",dent[i].name,dent[i].id,sum[i]);
+  }
+  
+  printf("合計点の最高は：%d点\n合計点の最低は：%d点\n合計点の平均は：%.1lf点\n英語の平均点は：%.1lf点\n数学の平均点は：%.1lf点\n物理の平均点は：%.1lf点\n",max,min,avesum/5,aveen/5,avema/5,aveph/5);
+  return 0;
+  
+  }
+u306024@imac-510[32]: gcc ctest1.c
+u306024@imac-510[33]: a.out
+Abe (306001)の合計点は：197点
+Igarashi (306021)の合計点は：204点
+Sato (306041)の合計点は：220点
+Suzuki (306051)の合計点は：253点
+Takahashi (306061)の合計点は：217点
+合計点の最高は：253点
+合計点の最低は：197点
+合計点の平均は：218.2点
+英語の平均点は：76.2点
+数学の平均点は：74.8点
+物理の平均点は：67.2点
+u306024@imac-510[34]: exit
+exit
+
+Script done on Wed Jun  5 17:39:08 2019

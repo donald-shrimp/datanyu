@@ -1,0 +1,59 @@
+Script started on Wed Jun  5 17:25:43 2019
+u306024@imac-510[31]: cat ctest2.c
+#include<stdio.h>
+#include<math.h>
+int main(){
+  char name[4][10];
+  int id[4],i;
+  double wei[4],hei[4],hyo,sa[4],heim;
+  FILE *fp;
+  for(i=0;i<4;i++){
+    printf("%d人目の学生番号は（６桁）？：",i+1);
+    scanf("%d",&id[i]);
+    printf("氏名は？：");
+    scanf("%s",name[i]);
+    printf("身長(cm)は？：");
+    scanf("%lf",&hei[i]);
+    printf("体重(Kg)は？：");
+    scanf("%lf",&wei[i]);
+    heim=hei[i]/100;
+    hyo=pow(heim,2)*22;
+    sa[i]=wei[i]-hyo;
+  }
+  fp=fopen("test.dat","w");
+  for(i=0;i<4;i++){
+    fprintf(fp,"%d %s %.1lf %.1lf %.1lf\n",id[i],name[i],hei[i],wei[i],sa[i]);
+  }
+  printf("\nファイルtest.datに出力します。\n");
+  fclose(fp);
+  return 0;
+}
+u306024@imac-510[32]: gcc ctest2.c
+u306024@imac-510[33]: a.out
+1人目の学生番号は（６桁）？：36 06001
+氏名は？：Abe
+身長(cm)は？：185.5
+体重(Kg)は？：82.0
+2人目の学生番号は（６桁）？：306021
+氏名は？：Igarashi
+身長(cm)は？：171.0
+体重(Kg)は？：61.5
+3人目の学生番号は（６桁）？：S 306041
+氏名は？：Sato
+身長(cm)は？：165.7
+体重(Kg)は？：58.3
+4人目の学生番号は（６桁）？：306051
+氏名は？：Suzuki
+身長(cm)は？：182.0
+体重(Kg)は？：75.4
+
+ファイルtest.datに出力します。
+u306024@imac-510[34]: a.out[23Ggcc ctest2.c[23Gcat[35G[23Gexit[Ka.out[23Ggcc ctest1.c[K[K[K[K[K[K[K[K[K[K[Kema[K[K[Kcat test.dat
+306001 Abe 185.5 82.0 6.3
+306021 Igarashi 171.0 61.5 -2.8
+306041 Sato 165.7 58.3 -2.1
+306051 Suzuki 182.0 75.4 2.5
+u306024@imac-510[35]: exit
+exit
+
+Script done on Wed Jun  5 17:28:43 2019

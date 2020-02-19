@@ -1,0 +1,129 @@
+Script started on Mon Jun  3 13:51:10 2019
+u306024@cse-ssh2[31]: cay[Kt kadai7-3.c
+#include <stdio.h>
+#include<stdlib.h>
+#define NUM 1000                                //  配列サイズ                  
+int n_comp=0, n_exchange=0, n_shift=0,n_in=0;             //  比較回数と交換回数(グローバル変数)
+void  insertion( int x[], int num );     
+void  bubble( int x[NUM], int num );
+void  swap( int *a, int *b );
+int  main(void)
+{
+  int  i, num, data_bub[NUM],data_ins[NUM];
+  printf("何回？：");
+  scanf("%d",&num);   //  データ数numを読み込む
+  for(i=0;i<100;i++){
+    data_bub[i]=rand();
+    data_ins[i]=data_bub[i];
+  }
+  
+  printf("\n");
+  bubble(data_bub,num);      //  バブルソート
+  insertion(data_ins,num);                   //  挿入法 
+    
+}
+
+void insertion(int x[], int num)
+{
+  int i,j,tmp;
+  for (i=1;i<=num-1;i++) {
+    tmp=x[i];
+    j=i;
+    while ((x[j-1]<tmp) && (j>0)) {
+      x[j]=x[j-1];
+      j--;
+      n_comp+=2; /* 比較 */
+      n_shift++; /* シフト */
+    }
+    x[j]=tmp;
+    n_in++; /* 挿入 */
+    n_comp+=2; /* 比較 */
+  }
+  printf("挿入法\n");
+  printf("比較回数：%d\n", n_comp);           //  表示                                                 
+  printf("シフト回数：%d\n", n_shift);        //  表示                                                 
+  printf("挿入回数：%d\n", n_in);        //  表示                                                      
+}
+
+
+void bubble(int x[], int num) {
+  int i,j;
+  for (i=0;i<num-1;i++) {
+    for (j=num-1;j>i;j--) {
+      n_comp++;
+      if (x[j-1]>x[j]) {
+        swap (&x[j-1],&x[j]);
+        n_exchange++;
+      }
+    }
+  }
+  printf("バブル\n");
+  printf("比較回数：%d\n", n_comp);           //  表示
+  printf("交換回数：%d\n", n_exchange);       //  表示
+}
+
+void  swap( int *a, int *b )
+{
+  int tmp = *a;
+  *a = *b;
+  *b = tmp;
+}
+
+
+
+
+u306024@cse-ssh2[32]: gcc kadai7-3.c
+u306024@cse-ssh2[33]: a.out
+何回？：20
+
+バブル
+比較回数：190
+交換回数：99
+挿入法
+比較回数：410
+シフト回数：91
+挿入回数：19
+u306024@cse-ssh2[34]: a.out
+何回？：40
+
+バブル
+比較回数：780
+交換回数：322
+挿入法
+比較回数：1774
+シフト回数：458
+挿入回数：39
+u306024@cse-ssh2[35]: a.out
+何回？：60
+
+バブル
+比較回数：1770
+交換回数：811
+挿入法
+比較回数：3806
+シフト回数：959
+挿入回数：59
+u306024@cse-ssh2[36]: a.out
+何回？：80
+
+バブル
+比較回数：3160
+交換回数：1452
+挿入法
+比較回数：6734
+シフト回数：1708
+挿入回数：79
+u306024@cse-ssh2[37]: a.out
+何回？：100
+
+バブル
+比較回数：4950
+交換回数：2275
+挿入法
+比較回数：10498
+シフト回数：2675
+挿入回数：99
+u306024@cse-ssh2[38]: exit
+exit
+
+Script done on Mon Jun  3 13:52:11 2019

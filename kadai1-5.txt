@@ -1,0 +1,7 @@
+Script started on Thu 11 Apr 2019 05:54:11 PM DST
+]0;ore@u306024: /mnt/c/Users/ebi/program/datanyu[01;32more@u306024[00m:[01;34m/mnt/c/Users/ebi/program/datanyu[00m$ cat kadai1-5.c
+cat: kadai1-5.c: No such file or directory
+]0;ore@u306024: /mnt/c/Users/ebi/program/datanyu[01;32more@u306024[00m:[01;34m/mnt/c/Users/ebi/program/datanyu[00m$ exit
+exit
+
+Script done on Thu 11 Apr 2019 05:56:29 PM DST
